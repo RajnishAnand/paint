@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Jquery-3.5.1.js --
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    
+    <!-- Custom-Google-Font:Rajdhani -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <!--External colorPicker: Spectrum ColorPicker --
+    <script src='http://bgrins.github.io/spectrum/spectrum.js'></script>
+    <link href="http://bgrins.github.io/spectrum/spectrum.css" rel="stylesheet"/> -->
+    
+   <script src="res/jquery-3.5.1.js"></script>
+   <script src="res/spectrum.js"></script>
+   <link href="res/spectrum.css" rel="stylesheet">
+   <link href="style.css" rel="stylesheet">
+   
+    <title></title>
+</head>
+<body>
+    <svg id="svgIco1">
+        <path d="M10 8 L20 24 L10 40" />
+    </svg>
+    <div id="sideBar">
+        <h1>CanvasPaint</h1>
+        <h5>ℹ️Info :</h5>
+        <p>
+            Adjusted for Android<br>
+            Best view on Chrome<br>
+            version:4.0
+        </p>
+        
+        <h5>💕Special Thanks to:</h5>
+        <p>
+        <a href="http://w3schools.com">w3Schools</a><br>
+        <a href="http://stackoverflow.com">Stack Overflow</a><br>
+        <a href="http://css-tricks.com">Css-Tricks</a> <br>
+        <a href="http://bgrins.github.io/spectrum">Spectrum ColorPicker</a><br>
+        SoloLearn❤️
+        </p>
+        
+        <h5>Older Version(s) :</h5>
+        <p>
+            <a href="https://code.sololearn.com/Wx74gLJKmBBJ">Canvas Paint🎨 (3.2)</a><br>
+            <a href="https://code.sololearn.com/W74NfSO7dQts">The Paint🎨 (2.3) </a>
+        </p>
+        <h5>Experimental</h5>
+        <p>
+            <input type="range">
+        </p>
+    </div>
+    
+    <!--for Tools (eraser, pencil.. ) -->
+    <div id="shapesC">
+        <div class="shapes">
+            <svg class="shapeIco">
+                <path style="stroke-width:1px;" d="
+                M8 12 L20 24 L32 12 L20 0 L0 20 L8 28 L16 28 L20 24
+                M8 28 L32 28
+                M12 12 L20 4
+                "/>
+            </svg>
+        </div>
+        <div class="shapes">
+            <svg class="shapeIco">
+                <path style="stroke-width:1px;" d="
+                M0 32 L12 28 L4 20 L0 32
+                M4 20 L20 4 L28 12 L12 28
+                M20 4 Q24 0 28 4 Q32 8 28 12
+                M8 20 L20 8
+                M2 26 L6 30
+                "/>
+            </svg>
+        </div>
+        <div class="shapes">
+            <svg class="shapeIco">
+                <line x1="4" y1="4" x2="28" y2="28" />
+            </svg>
+        </div>
+        <div class="shapes">
+            <svg class="shapeIco">
+                <rect x="4" y="4" height="24" width="24"/>
+            </svg>
+        </div>
+        <div class="shapes">
+            <svg class="shapeIco">
+                <circle cx="50%" cy="50%" r="12"/>
+            </svg>
+        </div>
+        <div class="shapes">
+            <svg class="shapeIco">
+                <text x="20%" y="80%" style="font-family:serif;stroke-width:1px;font-size:1.8em;" >T</text>
+            </svg>
+        </div>
+        <div id="clr">
+            <svg class="shapeIco" style="stroke-width:1px;">
+                <path d="
+                M12 8 a1 1 0 0 1 8 0
+                M8 8 l16 0 l0 2 l-16 0 l0 -2
+                M8 12 l16 0 l-2 0 l0 16 l-12 0 l0 -16
+                M12 15 l0 10 m10 0 l0 -10
+                "/>
+            </svg>
+        </div>
+    </div>
+    
+    <!--Mini tool box for pencil,line, rect & circle, -->
+    <div id="stYl">
+        <div class="strokWidCnt">
+            <div id="strokeWidthDemo"></div>
+            <div id="stroKwidH"></div>
+        </div>
+        <div class="colOp">
+            Stroke :
+            <input type='text' id="strokeColInp" />
+        </div>
+        <div class="colOp">
+            Fill :
+            <input type="text" id="fillColInp" />
+        </div>
+        <div class="colOp">
+            Fill : Disabled
+        </div>
+        <svg id="closE">
+            <path d="
+            M15 15 L30 30 M15 30 L30 15
+            "/>
+        </svg>
+        <input id="inp1" type="range" min="1" max="50" value="2" />
+        <div class="filL">
+            Fill:
+            <input id="inp6" type="checkbox" />
+        </div>
+    </div>
+    
+    <!--Triple-layer ✡⛦⛯ canvas-->
+    <canvas id="canvs"></canvas>
+    <canvas id="canvH"></canvas>
+    <canvas id="canvI"></canvas>
+    
+    <script src="main.js" ></script>
+    <script src="script2.js"></script>
+</body>
+</html>
