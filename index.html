@@ -1,3 +1,8 @@
+<!--
+Last Updated: 16 Nov 2020
+Created on : 03 Nov 2020
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,9 +52,13 @@
             <a href="https://code.sololearn.com/Wx74gLJKmBBJ">Canvas Paint🎨 (3.2)</a><br>
             <a href="https://code.sololearn.com/W74NfSO7dQts">The Paint🎨 (2.3) </a>
         </p>
-        <h5>Experimental</h5>
+        <h5>
+            Resolution :
+            <span id="reS">4</span>x
+        </h5>
         <p>
-            <input type="range">
+            <input id="inpRes" type="range" min="1" max="10" value="4"/>
+            <button id="resConf">Confirm</button>
         </p>
     </div>
     
@@ -90,11 +99,11 @@
                 <circle cx="50%" cy="50%" r="12"/>
             </svg>
         </div>
-        <div class="shapes">
+        <!--div class="shapes">
             <svg class="shapeIco">
                 <text x="20%" y="80%" style="font-family:serif;stroke-width:1px;font-size:1.8em;" >T</text>
             </svg>
-        </div>
+        </div -->
         <div id="clr">
             <svg class="shapeIco" style="stroke-width:1px;">
                 <path d="

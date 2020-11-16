@@ -1,3 +1,4 @@
+/* Under Development
 function getdata(){
     $('#canvs')[0].getDataURL();
     document.write(dataUrl);
@@ -5,12 +6,54 @@ function getdata(){
 };
 
 //Text
+let xT=0,yT=0;
+let txtWid;
 function teXt(){
-    
-    ctx.font='50px sans-serif';
-    let x1=ctx.measureText('101010').width;
-    ctx.strokeText('101010', x-x1/2, y);
-    ctx.fillText('101010', x-x1/2, y);
-    console.log(ctx.measureText('101010'));
+    let txt='Your Text';
+    let xd, yd, maxWid, maxHeight;
+    if (hold[0] && hold[1]) {
+        cty.textBaseline='middle';
+    }
+    else if (hold[0] || hold[1]) {
+        xd=(x<dx)?x:dx;
+        yd=(y<dy)?y:dy;
+        maxWid=Math.abs(dx-x);
+        maxHeight=Math.abs(dy-y);
+        txtWid=cty.measureText(txt).width;
+        txtWid=(txtWid<maxWid)?txtWid:maxWid;
+        xT=xd+(maxWid-txtWid)/2;
+        yT=yd+(maxHeight)/2;
+        
+        cty.beginPath();
+        stylTemp();
+        cty.clearRect(0,0,w,h);
+        cty.strokeRect(x,y,dx-x,dy-y);
+        cty.restore();
+        
+        cty.strokeText(txt,xT, yT,maxWid);
+        //cty.fillText(txt, xd+5, yd+5);
+    }
+    else {
+        cty.restore();
+        cty.beginPath();
+       // cty.clearRect(0,0,w,h);
+        ctx.beginPath();
+        ctx.strokeText(txt, dx/5, dy/5);
+        ctx.fillText(txt, dx/5, dy/5);
+        //console.log(ctx.font)
+    };
 }
+*/
 
+$('#inpRes').on('input',()=>{
+    $('#reS').html($('#inpRes').val());
+});
+$('#resConf').on('click', ()=>{
+    if(confirm('you will lost your current progress. Do you want to continue ? ')){
+        autoAdj($('#inpRes').val()/2);
+    }
+    else{
+        $('#inpRes').val(hdFx);
+        $('#reS').html(hdFx);
+    }
+});

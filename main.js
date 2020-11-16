@@ -28,6 +28,7 @@ function autoAdj(e){
     $('#canvH')[0].width = w;
     $('#canvI')[0].height = h;
     $('#canvI')[0].width = w;
+    stylCanv();
 };
 //-------------------------------------------
 
@@ -102,7 +103,7 @@ function detecT() {
             circ();
             break;
         case 5:
-            teXt();
+            //teXt();
             break;
     };
     toucH();
@@ -114,10 +115,10 @@ function detecT() {
 //-------------------------------------------
 //Eraser
 function ersr (){
-    let syz=100;
+    let syz=50*hdFx;
     
     if (hold[0] && hold[1]) {
-        cty.lineWidth = hdFx*2;
+        stylTemp();
         cty.clearRect(0, 0, w, h);
         cty.strokeRect(x-syz/2,y-syz/2,syz,syz);
         ctx.clearRect(x-syz/2,y-syz/2,syz,syz);
@@ -131,7 +132,7 @@ function ersr (){
     }
     else {
         cty.clearRect(0,0,w,h);
-        stylCanv();
+        cty.restore();
     };
 };
 
@@ -164,9 +165,8 @@ function rectngl(){
         cty.fillRect(dx, dy, x - dx, y - dy);
         cty.strokeRect(dx, dy, x - dx, y - dy);
         
-        cty.save();
-        cty.lineWidth=1*hdFx;
-        cty.strokeStyle='#f4fdff';
+        stylTemp();
+        cty.arc(dx,dy,hdFx*10,0,2*Math.PI);
         cty.moveTo(dx, dy);
         cty.lineTo(x, y);
         
@@ -221,10 +221,8 @@ function circ(){
         cty.fill();
         cty.stroke();
         
-        cty.save();
         cty.beginPath();
-        cty.lineWidth=1*hdFx;
-        cty.strokeStyle='#f4fdff';
+        stylTemp();
         cty.moveTo(dx, dy);
         cty.lineTo(x, y);
         cty.stroke();
@@ -273,6 +271,7 @@ function stylCanv (){
         ct.strokeStyle =strokColor;
         ct.lineJoin = "round";
         ct.lineCap = "round";
+        ct.font='50px sans-serif';
         ct.save();
     };
     
@@ -285,7 +284,14 @@ function stylCanv (){
     $('#stroKwidH').html(lineWid);
     //console.log(strokColor);
 };
-
+function stylTemp(){
+    cty.save();
+    cty.strokeStyle='#ffffff';
+    cty.lineWidth=hdFx;
+    cty.shadowOffsetX=-hdFx;
+    cty.shadowOffsetY=hdFx;
+    cty.shadowColor='#000000';
+}
 //-------------------------------------------
 
 

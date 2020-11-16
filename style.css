@@ -83,6 +83,20 @@ h1{
     border: solid 1px #aaa;
     border-radius:2px;
 }
+p>button{
+    background:#33333377;
+    color:#ffffff;
+    font-family:inherit;
+    border:1px solid #ffffff55;
+    font-size:1.1em;
+    padding:0px 20px;
+    position:relative;
+    margin:auto;
+    display:block;
+}
+p>button:active{
+    background:#ff000055;
+}
 
 a{color: #6DBEE9;}
 /***************************************/
