@@ -45,15 +45,3 @@ function teXt(){
 }
 */
 
-$('#inpRes').on('input',()=>{
-    $('#reS').html($('#inpRes').val());
-});
-$('#resConf').on('click', ()=>{
-    if(confirm('you will lost your current progress. Do you want to continue ? ')){
-        autoAdj($('#inpRes').val()/2);
-    }
-    else{
-        $('#inpRes').val(hdFx);
-        $('#reS').html(hdFx);
-    }
-});

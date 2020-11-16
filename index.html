@@ -16,21 +16,63 @@ Created on : 03 Nov 2020
     
     <!--External colorPicker: Spectrum ColorPicker --
     <script src='http://bgrins.github.io/spectrum/spectrum.js'></script>
-    <link href="http://bgrins.github.io/spectrum/spectrum.css" rel="stylesheet"/> -->
+    <link href="http://bgrins.github.io/spectrum/spectrum.css" rel="stylesheet"/-->
     
    <script src="res/jquery-3.5.1.js"></script>
    <script src="res/spectrum.js"></script>
-   <link href="res/spectrum.css" rel="stylesheet">
+   <link href="res/spectrum.css" rel="stylesheet"-->
    <link href="style.css" rel="stylesheet">
    
     <title></title>
 </head>
 <body>
+    
+    <!-- Loding Page-->
+    <div id="loadingScrn" style="position:fixed;width:100%;height:100%;background:#333333;color:#ffffff55;font-size:2em;text-align:center;line-height :60vh;font-family:sans-serif;text-shadow:5px 5px 20px #000000;font-weight:300;z-index:9999999999999999;">
+        Loading...
+        <noscript>Please change your browser to proceed. Your browser dosen't support JS. 
+        </noscript>
+    </div>
+    
+    <!--Sidebar-->
     <svg id="svgIco1">
         <path d="M18 8 L8 24 L18 40" />
     </svg>
     <div id="sideBar">
         <h1>CanvasPaint</h1>
+        <h5>
+            Resolution :
+            <span id="reS">4</span>x
+        </h5>
+        <p>
+            <input id="inpRes" type="range" min="1" max="10" value="4"/>
+            <button id="resConf">Confirm</button>
+        </p>
+        
+        <h5>Canvas Background</h5>
+        <p style="display:grid;grid-template-columns:auto auto; ">
+            <button class="canvBgColo">
+                White
+            </button>
+            <button class="canvBgColo">
+                Black
+            </button>
+        </p>
+        
+        <h5>Experimental</h5>
+        <p>
+            <input id="experimentalInp1" type="checkbox" checked/>
+            <label for="experimentalInp1">
+                Show Taps
+            </label><br><br>
+            
+            <label for="experimentalInp2">
+                Opacity:
+                <span id="transp">1</span>
+            </label>
+            <input id="experimentalInp2" type="range" min="1" value="100" max="100"/>
+        </p>
+        
         <h5>ℹ️Info :</h5>
         <p>
             Adjusted for Android<br>
@@ -51,14 +93,6 @@ Created on : 03 Nov 2020
         <p>
             <a href="https://code.sololearn.com/Wx74gLJKmBBJ">Canvas Paint🎨 (3.2)</a><br>
             <a href="https://code.sololearn.com/W74NfSO7dQts">The Paint🎨 (2.3) </a>
-        </p>
-        <h5>
-            Resolution :
-            <span id="reS">4</span>x
-        </h5>
-        <p>
-            <input id="inpRes" type="range" min="1" max="10" value="4"/>
-            <button id="resConf">Confirm</button>
         </p>
     </div>
     

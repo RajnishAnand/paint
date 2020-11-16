@@ -15,11 +15,11 @@ body{
     left :0;
     height:100%;
     width:100%;
-    background:#000000;
+    background:#00000000;
     touch-action:none;
     z-index:1;
 }
-#canvH,#canvI{background:#00000000;}
+#canvs{background:#000000;}
 /***************************************/
 
 
@@ -93,9 +93,11 @@ p>button{
     position:relative;
     margin:auto;
     display:block;
+    user-select:none;
 }
 p>button:active{
-    background:#ff000055;
+    background:#00bfff55;
+    border-color:#00bfff;
 }
 
 a{color: #6DBEE9;}
@@ -115,7 +117,7 @@ input[type="range"]{
     height:24px;
     margin-top:10px;
     margin-bottom:10px;
-    box-shadow:0  -5px 10px #000a inset;
+    box-shadow:0  -5px 10px #000000aa inset;
 }
 input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance:none;
@@ -123,7 +125,7 @@ input[type="range"]::-webkit-slider-thumb{
     height:24px;
     background:#fff;
     border-radius:50%;
-    box-shadow:5px 5px 5px #0007 inset, -3px -3px 5px #0007;
+    box-shadow:5px 5px 5px #00005577 inset, -3px -3px 5px #00000077;
 }
 /*
 input[type="color"]{

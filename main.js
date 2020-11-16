@@ -3,12 +3,19 @@ let ctx = $('#canvs')[0].getContext("2d");
 let cty = $('#canvH')[0].getContext("2d");
 let ctz = $('#canvI')[0].getContext("2d");
 
+//onload function
 $(()=>{ 
     autoAdj(2);
     stylCanv();
     
     $($('.colOp')[1]).hide();
     $('#sideBar').hide();
+    setTimeout(()=>{
+        $('#loadingScrn').fadeToggle(500);
+        setTimeout(()=>{
+            $('#loadingScrn').remove();
+        }, 500); 
+    },500); 
     //getData();
 });
 //-------------------------------------------
@@ -59,11 +66,9 @@ $('#canvI').on("touchcancel", (ev)=> {
     hold = [false, false];
     detecT();
 });
-$('#canvI').on('click',()=>{
-    if(btnInfo1){$('#svgIco1').click()};
-});
 
 //To show taps
+let showTap=true;
 const toucH=()=>{
     ctz.fillStyle='#ffffff99';
     if (hold[0] || hold[1]) {
@@ -106,7 +111,7 @@ function detecT() {
             //teXt();
             break;
     };
-    toucH();
+    if(showTap){toucH()};
 };
 //-------------------------------------------
 
@@ -164,14 +169,16 @@ function rectngl(){
         cty.clearRect(0, 0, w, h);
         cty.fillRect(dx, dy, x - dx, y - dy);
         cty.strokeRect(dx, dy, x - dx, y - dy);
-        
-        stylTemp();
-        cty.arc(dx,dy,hdFx*10,0,2*Math.PI);
-        cty.moveTo(dx, dy);
-        cty.lineTo(x, y);
-        
         cty.stroke();
-        cty.restore();
+        
+        if(showTap){
+            stylTemp();
+            cty.arc(dx,dy,hdFx*10,0,2*Math.PI);
+            cty.moveTo(dx, dy);
+            cty.lineTo(x, y);
+            cty.stroke();
+            cty.restore();
+        };
     }
     else {
         cty.beginPath();
@@ -221,12 +228,14 @@ function circ(){
         cty.fill();
         cty.stroke();
         
-        cty.beginPath();
-        stylTemp();
-        cty.moveTo(dx, dy);
-        cty.lineTo(x, y);
-        cty.stroke();
-        cty.restore();
+        if(showTap){
+            cty.beginPath();
+            stylTemp();
+            cty.moveTo(dx, dy);
+            cty.lineTo(x, y);
+            cty.stroke();
+            cty.restore();
+        };
     }
     else {
         cty.beginPath();
@@ -272,6 +281,7 @@ function stylCanv (){
         ct.lineJoin = "round";
         ct.lineCap = "round";
         ct.font='50px sans-serif';
+        ct.globalAlfa='0.5';
         ct.save();
     };
     
@@ -297,7 +307,7 @@ function stylTemp(){
 
 
 //-------------------------------------------
-//Event lister to set style on input
+//Event listener to set style when input
 
 $('#inp1').on("input",()=>{
     lineWid=$('#inp1').val();
@@ -323,8 +333,10 @@ $('#inp6').on("change", () => {
 
 
 //-------------------------------------------
-//For mini tool box
+//mini tool box section 
+
 $('#closE').on('click',()=>{$('#stYl').hide(100)});
+
 //For Spectrum Color Picker
 $("#strokeColInp").spectrum({
     color:'#00bfff', 
@@ -342,7 +354,6 @@ $("#strokeColInp").spectrum({
         stylCanv();
     }
 });
-
 $("#fillColInp").spectrum({
     color:'#005588', 
     containerClassName: 'colorPikrC', 
@@ -365,11 +376,12 @@ $("#fillColInp").spectrum({
 
 
 //-------------------------------------------
-//fot selecting shape like pencil,eraser... 
+//selecting tool/shape section
+
 let sapes = $(".shapeIco");
 $(sapes[1]).css('stroke',"#00dfff");
 
-//shows which is selected
+//to highlight selected tool/shapes
 const selct = (lt) => {
     for (let i=0;i<sapes.length-1;i++) {
         $(sapes[i]).css('stroke', "#aaaaaa");
@@ -391,26 +403,62 @@ for (let i = 0; i < sapes.length-1; i++) {
 
 
 //-------------------------------------------
-//for right control panel's popup button
+//sidebar and sidebar-Elements section
+
+//for sidebar toggle button 
 let btnInfo1 = false;
 $('#svgIco1').on('click',()=>{
     btnInfo1 = (btnInfo1 == true) ? false : true;
     if (btnInfo1) {
         $('#sideBar').show(200);
+        $('#canvI').hide();
         $('#svgIco1').css('right', "12.1em");
         $('#svgIco1').html('<path d="M10 8 L20 24 L10 40" />');
     }
     else {
         $('#sideBar').hide(200);
+        $('#canvI').show();
         $('#svgIco1').css('right', "0");
         $('#svgIco1').html('<path d="M18 8 L8 24 L18 40" />');
     };
 });
-//-------------------------------------------
+$('#canvH').on('touchmove',()=>{
+    if(btnInfo1){$('#svgIco1').click()};
+});
 
+//for changing resolution 
+$('#inpRes').on('input',()=>{
+    $('#reS').html($('#inpRes').val());
+});
+$('#resConf').on('click', ()=>{
+    if(confirm('you will lost your current progress. Do you want to continue ? ')){
+        autoAdj($('#inpRes').val()/2);
+    }
+    else{
+        $('#inpRes').val(hdFx*2);
+        $('#reS').html(hdFx*2);
+    }
+});
 
+//for changing canvas background 
+$('.canvBgColo').on('click',(ev)=>{
+    $('#canvs').css('background',$(ev.target).html());
+});
 
-//-------------------------------------------
+//to toggle showTap
+$('#experimentalInp1').on('input', (ev)=>{
+    showTap=$(ev.target)[0].checked;
+})
+
+//for transpirancy
+$('#experimentalInp2').on('input',(ev)=>{
+    let transparency=$(ev.target).val()/100;
+    $('#transp').html(transparency);
+    for (let each of [cty, ctx]){
+        each.globalAlfa=transparency;
+    };
+});
+
 //to move svgIco1 button up-down
 $('#svgIco1').on("touchmove", (ev) => {
     ev.stopPropagation();
