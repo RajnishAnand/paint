@@ -15,8 +15,7 @@ $(()=>{
         setTimeout(()=>{
             $('#loadingScrn').remove();
         }, 500); 
-    },500); 
-    //getData();
+    },500);
 });
 //-------------------------------------------
 
@@ -27,7 +26,7 @@ $(()=>{
 function autoAdj(e){ 
     hdFx=e;
     w = innerWidth*hdFx;
-    h = innerHeight*hdFx;
+    h = (innerHeight-38)*hdFx;
     
     $('#canvs')[0].height = h;
     $('#canvs')[0].width = w;
@@ -36,6 +35,9 @@ function autoAdj(e){
     $('#canvI')[0].height = h;
     $('#canvI')[0].width = w;
     stylCanv();
+    for(let each of [cty, ctx]){
+        each.globalAlfa=$('#experimentalInp2').val()/100;
+    };
 };
 //-------------------------------------------
 
@@ -145,13 +147,21 @@ function ersr (){
 function pncl (){
     if (hold[0] && hold[1]) {
         ctx.beginPath();
+        cty.beginPath();
         ctx.moveTo(dx, dy);
+        cty.moveTo(dx,dy);
     }
     else if (hold[0] || hold[1]) {
         ctx.lineTo(x, y);
-        ctx.stroke();
+        //cty.clearRect(0,0,w,h);
+        cty.lineTo(x, y);
+        cty.stroke()
+        cty.beginPath();
+        cty.moveTo(x, y);
     }
     else {
+        cty.clearRect(0,0,w,h);
+        ctx.stroke();
         ctx.fill();
     };
 };
@@ -281,7 +291,6 @@ function stylCanv (){
         ct.lineJoin = "round";
         ct.lineCap = "round";
         ct.font='50px sans-serif';
-        ct.globalAlfa='0.5';
         ct.save();
     };
     
@@ -301,6 +310,7 @@ function stylTemp(){
     cty.shadowOffsetX=-hdFx;
     cty.shadowOffsetY=hdFx;
     cty.shadowColor='#000000';
+    cty.globalAlpha =1;
 }
 //-------------------------------------------
 
@@ -422,7 +432,7 @@ $('#svgIco1').on('click',()=>{
         $('#svgIco1').html('<path d="M18 8 L8 24 L18 40" />');
     };
 });
-$('#canvH').on('touchmove',()=>{
+$('#canvH').on('click',()=>{
     if(btnInfo1){$('#svgIco1').click()};
 });
 
@@ -452,10 +462,10 @@ $('#experimentalInp1').on('input', (ev)=>{
 
 //for transpirancy
 $('#experimentalInp2').on('input',(ev)=>{
-    let transparency=$(ev.target).val()/100;
+    let transparency=$(ev.target).val();
     $('#transp').html(transparency);
     for (let each of [cty, ctx]){
-        each.globalAlfa=transparency;
+        each.globalAlpha=transparency/100;
     };
 });
 

@@ -1,10 +1,17 @@
-/* Under Development
-function getdata(){
-    $('#canvs')[0].getDataURL();
-    document.write(dataUrl);
-    //document.write('<img src="'+dataUrl+'" width="100%" />');
+/* Under Development */
+function generateImg(){
+    let el=$('<a id="download"></a>');
+        $(el).attr({
+            'download':'img_'+Date.now()+'.png',
+            'href':$('#canvs')[0].toDataURL()
+        });
+        $('#sideBar').append(el);
+        $('#download')[0].click();
+        $('#download').remove();
 };
+$('#downloadBtn').on('click',generateImg);
 
+/*
 //Text
 let xT=0,yT=0;
 let txtWid;
