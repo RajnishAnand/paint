@@ -36,7 +36,7 @@ function autoAdj(e){
     $('#canvI')[0].width = w;
     stylCanv();
     for(let each of [cty, ctx]){
-        each.globalAlfa=$('#experimentalInp2').val()/100;
+        each.globalAlpha=$('#experimentalInp2').val()/100;
     };
 };
 //-------------------------------------------
@@ -153,13 +153,12 @@ function pncl (){
     }
     else if (hold[0] || hold[1]) {
         ctx.lineTo(x, y);
-        //cty.clearRect(0,0,w,h);
+        cty.clearRect(0,0,w,h);
         cty.lineTo(x, y);
         cty.stroke()
-        cty.beginPath();
-        cty.moveTo(x, y);
     }
     else {
+        cty.beginPath();
         cty.clearRect(0,0,w,h);
         ctx.stroke();
         ctx.fill();
@@ -347,6 +346,7 @@ $('#inp6').on("change", () => {
 
 $('#closE').on('click',()=>{$('#stYl').hide(100)});
 
+$(()=>{
 //For Spectrum Color Picker
 $("#strokeColInp").spectrum({
     color:'#00bfff', 
@@ -380,7 +380,7 @@ $("#fillColInp").spectrum({
         stylCanv();
     }, 
 });
-
+});
 //-------------------------------------------
 
 
