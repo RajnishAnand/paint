@@ -371,7 +371,6 @@ $('#inpEr').on('input',()=>{
 $('#closE').on('click',()=>{$('#stYl').hide(100)});
 $('#closR').on('click',()=>{$('#ersrT').hide(100)});
 
-$(()=>{
 //For Spectrum Color Picker
 $("#strokeColInp").spectrum({
     color:'#00bfff', 
@@ -404,7 +403,6 @@ $("#fillColInp").spectrum({
         fillColor=col.toHexString();
         stylCanv();
     }, 
-});
 });
 //-------------------------------------------
 
