@@ -156,7 +156,6 @@ function ersr (){
         ctx.fillStyle=fillColor;
         ctx.globalCompositeOperation='source-over';
         ctx.globalAlpha=transparency/100;
-        
         cty.clearRect(0,0,w,h);
         cty.restore();
     };
@@ -490,7 +489,7 @@ $('#experimentalInp1').on('input', (ev)=>{
 })
 
 //for transpirancy
-let transparency=1;
+let transparency=100;
 $('#experimentalInp2').on('input',(ev)=>{
     transparency=$(ev.target).val();
     $('#transp').html(transparency);
