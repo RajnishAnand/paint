@@ -1,15 +1,18 @@
-let hdFx=w=h=0;
+let hdFx=w=h=`👀/\u5965 `;
+$(()=>{
 let ctx = $('#canvs')[0].getContext("2d");
 let cty = $('#canvH')[0].getContext("2d");
 let ctz = $('#canvI')[0].getContext("2d");
 
+
 //onload function
-$(()=>{ 
+$(document).ready(()=>{ 
     autoAdj(2);
     stylCanv();
     
     $($('.colOp')[1]).hide();
     $('#sideBar').hide();
+    $('#ersrT').hide();
     setTimeout(()=>{
         $('#loadingScrn').fadeToggle(500);
         setTimeout(()=>{
@@ -121,23 +124,39 @@ function detecT() {
 
 //-------------------------------------------
 //Eraser
+let eraserSyz=30;
 function ersr (){
-    let syz=50*hdFx;
-    
+    let syz=eraserSyz*hdFx;
     if (hold[0] && hold[1]) {
         stylTemp();
+        ctx.globalCompositeOperation='destination-out';
+        ctx.globalAlpha=1;
+        ctx.beginPath();
+        ctx.fillStyle='#ffffff';
+        ctx.arc(x,y,syz,0,2*Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        
         cty.clearRect(0, 0, w, h);
-        cty.strokeRect(x-syz/2,y-syz/2,syz,syz);
-        ctx.clearRect(x-syz/2,y-syz/2,syz,syz);
+        cty.arc(x,y,syz,0,2*Math.PI);
         cty.stroke();
+        cty.beginPath();
     }
     else if (hold[0] || hold[1]) {
+        ctx.arc(x,y,syz,0,2*Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        
         cty.clearRect(0, 0, w, h);
-        cty.strokeRect(x-syz/2,y-syz/2,syz,syz);
-        ctx.clearRect(x-syz/2,y-syz/2,syz,syz);
+        cty.arc(x,y,syz,0,2*Math.PI);
         cty.stroke();
+        cty.beginPath();
     }
     else {
+        ctx.fillStyle=fillColor;
+        ctx.globalCompositeOperation='source-over';
+        ctx.globalAlpha=transparency/100;
+        
         cty.clearRect(0,0,w,h);
         cty.restore();
     };
@@ -337,6 +356,11 @@ $('#inp6').on("change", () => {
     };
     stylCanv();
 });
+$('#inpEr').on('input',()=>{
+    let alpha=$('#inpEr').val();
+    $('#eraser-size').html(alpha);
+    eraserSyz=alpha;
+});
 //-------------------------------------------
 
 
@@ -345,6 +369,7 @@ $('#inp6').on("change", () => {
 //mini tool box section 
 
 $('#closE').on('click',()=>{$('#stYl').hide(100)});
+$('#closR').on('click',()=>{$('#ersrT').hide(100)});
 
 $(()=>{
 //For Spectrum Color Picker
@@ -397,8 +422,14 @@ const selct = (lt) => {
         $(sapes[i]).css('stroke', "#aaaaaa");
     };
     $(sapes[slct]).css('stroke',"#00dfff");
-    if(slct>0&&slct<5){$('#stYl').show(100)}
-    else{$('#stYl').hide(100)};
+    if(slct>0&&slct<5){
+        $('#stYl').show(100);
+        $('#ersrT').hide(100);
+    }
+    else if(slct==0){
+        $('#stYl').hide(100);
+        $('#ersrT').show(100);
+    };
 };
 
 //Event listener when shapes etc are selected
@@ -461,11 +492,22 @@ $('#experimentalInp1').on('input', (ev)=>{
 })
 
 //for transpirancy
+let transparency=1;
 $('#experimentalInp2').on('input',(ev)=>{
-    let transparency=$(ev.target).val();
+    transparency=$(ev.target).val();
     $('#transp').html(transparency);
     for (let each of [cty, ctx]){
         each.globalAlpha=transparency/100;
+    };
+});
+
+//for outline
+$('#experimentalInp3').on('input',(ev)=>{
+    if($(ev.target)[0].checked){
+        $('*').css('outline','solid 1px #ff0000');
+    }
+    else{
+        $('*').css('outline','none');
     };
 });
 
@@ -479,3 +521,21 @@ $('#svgIco1').on("touchmove", (ev) => {
     };
 });
 //-------------------------------------------
+
+
+//-------------------------------------------
+//downlod image 
+function generateImg(){
+    let el=$('<a id="download"></a>');
+        $(el).attr({
+            'download':'img_'+Date.now()+'.png',
+            'href':$('#canvs')[0].toDataURL(), 
+            'target':'_blank'
+        });
+        $('#sideBar').append(el);
+        $('#download')[0].click();
+        $('#download').remove();
+};
+$('#downloadBtn').on('click',generateImg);
+
+});//----------------------------------------

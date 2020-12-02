@@ -8,7 +8,7 @@ Created on : 03 Nov 2020
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--Jquery-3.5.1.js -->
+    <!--Jquery-3.5.1.js --
      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     
     <!-- Custom-Google-Font:Rajdhani -->
@@ -26,7 +26,6 @@ Created on : 03 Nov 2020
     <title></title>
 </head>
 <body>
-    
     <!-- Loding Page-->
     <div id="loadingScrn" style="position:fixed;width:100%;height:100%;background:#333333;color:#ffffff55;font-size:2em;text-align:center;line-height :60vh;font-family:sans-serif;text-shadow:5px 5px 20px #000000;font-weight:300;z-index:9999999999999999;">
         Loading...
@@ -70,7 +69,11 @@ Created on : 03 Nov 2020
                 Opacity:
                 <span id="transp">100</span>%
             </label>
-            <input id="experimentalInp2" type="range" min="1" value="100" max="100"/>
+            <input id="experimentalInp2" type="range" min="1" value="100" max="100"/><br>
+            <input type="checkbox" id="experimentalInp3">
+            <label for="experimentalInp3">
+                Show Outline
+            </label><br>
         </p>
         <h5>Save your Drawing</h5>
         <p>
@@ -97,6 +100,14 @@ Created on : 03 Nov 2020
         <p>
             <a href="https://code.sololearn.com/Wx74gLJKmBBJ">Canvas Paint🎨 (3.2)</a><br>
             <a href="https://code.sololearn.com/W74NfSO7dQts">The Paint🎨 (2.3) </a>
+        </p>
+        <h5>
+            Contact Me
+        </h5>
+        <p>
+            <a href="https://www.sololearn.com/Profile/15610625"><img height="30px" src="https://sololearn.com/Images/favicon.ico"></a>
+            <a href="https://www.instagram.com/rajnish000anand/"><img height="30px"src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1024px-Instagram_logo_2016.svg.png"></a>
+            
         </p>
     </div>
     
@@ -181,6 +192,16 @@ Created on : 03 Nov 2020
             Fill:
             <input id="inp6" type="checkbox" />
         </div>
+    </div>
+    <!--Eraser tool box-->
+    <div id="ersrT">
+        <div id="eraser-size">30</div>
+        <input type="range" max="100" min="1" id="inpEr">
+        <svg id="closR">
+            <path d="
+            M15 15 L30 30 M15 30 L30 15
+            "/>
+        </svg>
     </div>
     
     <!--Triple-layer ✡⛦⛯ canvas-->

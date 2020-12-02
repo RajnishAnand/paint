@@ -240,7 +240,10 @@ input[type="checkbox"]{
     border-radius:2px;
     text-align:center;
 }
-#stYl>div, #stYl>svg{background:#333333aa;}
+#stYl>div,
+#stYl>svg,
+#ersrT>div,
+#ersrT>svg{background:#333333aa;}
 .strokWidCnt{
     display:inline-block;
     padding-top:5px;
@@ -270,7 +273,7 @@ input[type="checkbox"]{
 .filL{
     line-height:35px;
 }
-#closE{
+#closE, #closR{
     height:45px;
     width:45px;
     fill:transparent;
@@ -278,8 +281,31 @@ input[type="checkbox"]{
     stroke-width:5px;
     stroke-linecap:round;
 }
-#closE:active{
+#closE:active,#closR:active{
     stroke:#ff0000;
+}
+
+#ersrT{
+    background:#33333399;
+    backdrop-filter:blur(2px);
+    position:fixed;
+    display:grid;
+    grid-template-columns:45px auto 45px;
+    grid-template-rows:45px;
+    grid-gap:2px;
+    z-index:3;
+    width:98%;
+    left:50%;
+    transform:translate(-50%);
+    bottom:2.8em;
+    overflow:hidden;
+    border-radius:2px;
+    text-align:center;
+}
+#ersrT>input{margin:auto;}
+#eraser-size{
+    text-align:center;
+    line-height:45px;
 }
 /***************************************/
 

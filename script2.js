@@ -1,16 +1,5 @@
 /* Under Development */
-function generateImg(){
-    let el=$('<a id="download"></a>');
-        $(el).attr({
-            'download':'img_'+Date.now()+'.png',
-            'href':$('#canvs')[0].toDataURL(), 
-            'target':'_blank'
-        });
-        $('#sideBar').append(el);
-        $('#download')[0].click();
-        $('#download').remove();
-};
-$('#downloadBtn').on('click',generateImg);
+
 
 /*
 //Text

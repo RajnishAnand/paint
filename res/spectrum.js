@@ -1071,7 +1071,7 @@
                 e.stopPropagation();
             }
             if (e.preventDefault) {
-                e.preventDefault();
+                //e.preventDefault();
             }
             e.returnValue = false;
         }
@@ -2337,5 +2337,4 @@
             $.fn.spectrum.processNativeColorInputs();
         }
     });
-
 });
