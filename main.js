@@ -1,3 +1,5 @@
+//alert("Please comment if you find a 🐛.bug");
+
 let hdFx=w=h=`👀/\u5965 `;
 $(()=>{
 let ctx = $('#canvs')[0].getContext("2d");
@@ -136,6 +138,8 @@ function ersr (){
         ctx.arc(x,y,syz,0,2*Math.PI);
         ctx.fill();
         ctx.beginPath();
+        ctx.lineWidth=syz*2;
+        ctx.moveTo(dx,dy);
         
         cty.clearRect(0, 0, w, h);
         cty.arc(x,y,syz,0,2*Math.PI);
@@ -143,9 +147,8 @@ function ersr (){
         cty.beginPath();
     }
     else if (hold[0] || hold[1]) {
-        ctx.arc(x,y,syz,0,2*Math.PI);
-        ctx.fill();
-        ctx.beginPath();
+        ctx.lineTo(x,y);
+        ctx.stroke();
         
         cty.clearRect(0, 0, w, h);
         cty.arc(x,y,syz,0,2*Math.PI);
@@ -153,9 +156,11 @@ function ersr (){
         cty.beginPath();
     }
     else {
+        ctx.beginPath();
         ctx.fillStyle=fillColor;
         ctx.globalCompositeOperation='source-over';
         ctx.globalAlpha=transparency/100;
+        ctx.lineWidth=lineWid;
         cty.clearRect(0,0,w,h);
         cty.restore();
     };
@@ -465,6 +470,7 @@ $('#canvH').on('click',()=>{
 });
 
 //for changing resolution 
+$('#inpRes').on('touchend',()=>{$('#resConf')[0].click()});
 $('#inpRes').on('input',()=>{
     $('#reS').html($('#inpRes').val());
 });
