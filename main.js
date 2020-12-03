@@ -133,16 +133,15 @@ function ersr (){
         stylTemp();
         ctx.globalCompositeOperation='destination-out';
         ctx.globalAlpha=1;
-        ctx.beginPath();
-        ctx.fillStyle='#ffffff';
-        ctx.arc(x,y,syz,0,2*Math.PI);
-        ctx.fill();
-        ctx.beginPath();
         ctx.lineWidth=syz*2;
+        ctx.fillStyle='#ffffff';
+        ctx.beginPath();
         ctx.moveTo(dx,dy);
+        ctx.lineTo(dx,dy);
+        ctx.stroke();
         
         cty.clearRect(0, 0, w, h);
-        cty.arc(x,y,syz,0,2*Math.PI);
+        cty.arc(x,y,syz-1,0,2*Math.PI);
         cty.stroke();
         cty.beginPath();
     }
@@ -160,7 +159,7 @@ function ersr (){
         ctx.fillStyle=fillColor;
         ctx.globalCompositeOperation='source-over';
         ctx.globalAlpha=transparency/100;
-        ctx.lineWidth=lineWid;
+        ctx.lineWidth=lineWid*hdFx;
         cty.clearRect(0,0,w,h);
         cty.restore();
     };
