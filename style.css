@@ -323,6 +323,7 @@ input[type="checkbox"]{
     outline:0;
     border:2px solid #aaaaaa;
     display:inline-block;
+    touch-action:none;
 }
 .sp-palette-container{
     width:1.7em;
