@@ -1,5 +1,3 @@
-//alert("Please comment if you find a 🐛.bug");
-
 let hdFx=w=h=`👀/\u5965 `;
 $(()=>{
 let ctx = $('#canvs')[0].getContext("2d");
@@ -159,7 +157,7 @@ function ersr (){
         ctx.fillStyle=fillColor;
         ctx.globalCompositeOperation='source-over';
         ctx.globalAlpha=transparency/100;
-        ctx.lineWidth=lineWid*hdFx;
+        ctx.lineWidth=lineWid*hdFx; 
         cty.clearRect(0,0,w,h);
         cty.restore();
     };
