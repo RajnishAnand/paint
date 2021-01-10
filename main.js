@@ -243,7 +243,7 @@ function lyne(){
     };
 };
 
-//circle
+//circle 
 function circ(){
     if (hold[0] && hold[1]) {
         ctx.beginPath();
