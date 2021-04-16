@@ -26,9 +26,39 @@ Created on : 03 Nov 2020
     <title></title>
 </head>
 <body>
-    <!-- Loding Page-->
-    <div id="loadingScrn" style="position:fixed;width:100%;height:100%;background:#333333;color:#ffffff55;font-size:2em;text-align:center;line-height :60vh;font-family:sans-serif;text-shadow:5px 5px 20px #000000;font-weight:300;z-index:9999999999999999;">
-        Loading...
+    <!--Loading Page-->
+    <style>
+#page-ld{
+    background:#000000;
+    position:fixed;
+    z-index:10;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    display:block;/*loading pg⚡*/
+    
+}
+.loading-ico{
+    position:relative;
+    left:50%; 
+    top:50%;
+    height:5em;
+    width:5em;
+    transform:translate(-50%,-50%);
+    border:2px solid #318EDB;
+    border-top:2px solid transparent;
+    border-radius:50%;
+    animation:2s rota cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes rota{
+    0%{transform:translate(-50%,-50%) rotate(0);}
+    100%{transform:translate(-50%,-50%) rotate(360deg);}
+}
+    </style>
+    <div id="page-ld">
+        <div class="loading-ico"></div>
         <noscript>Please change your browser to proceed. Your browser dosen't support JS. 
         </noscript>
     </div>
@@ -150,20 +180,27 @@ Created on : 03 Nov 2020
         </div>
         <!--div class="shapes">
             <svg class="shapeIco">
-                <text x="20%" y="80%" style="font-family:serif;stroke-width:1px;font-size:1.8em;" >T</text>
+                <text x="20%" y="87%" style="font-family:serif;stroke-width:1px;font-size:1.8em;" >T</text>
             </svg>
         </div -->
         <div id="clr">
             <svg class="shapeIco" style="stroke-width:1px;">
                 <path d="
-                M12 8 a1 1 0 0 1 8 0
-                M8 8 l16 0 l0 2 l-16 0 l0 -2
+                M12 10 l0 -2 8 0 0 2
+                M9 10 l14 0 
                 M8 12 l16 0 l-2 0 l0 16 l-12 0 l0 -16
                 M12 15 l0 10 m10 0 l0 -10
                 "/>
             </svg>
         </div>
     </div>
+    
+    <!--ℹ️ Color piker--
+    <div id="color-pik">
+        <div>R</div>
+        <div>B</div>
+        <div>G</div>
+    </div-->
     
     <!--Mini tool box for pencil,line, rect & circle, -->
     <div id="stYl">
@@ -193,7 +230,7 @@ Created on : 03 Nov 2020
             <input id="inp6" type="checkbox" />
         </div>
     </div>
-    <!--Eraser tool box-->
+    <!--Eraser tool box--
     <div id="ersrT">
         <div id="eraser-size">30</div>
         <input type="range" max="100" min="1" value="30" id="inpEr">
@@ -202,6 +239,13 @@ Created on : 03 Nov 2020
             M15 15 L30 30 M15 30 L30 15
             "/>
         </svg>
+    </div-->
+    
+    <!--Text tool box-->
+    <div id="text-tool-box">
+      <textarea>Your Text</textarea>
+      <div>font</div>
+      
     </div>
     
     <!--Triple-layer ✡⛦⛯ canvas-->

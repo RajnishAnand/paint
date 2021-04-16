@@ -1,4 +1,5 @@
 let hdFx=w=h=`👀/\u5965 `;
+
 $(()=>{
 let ctx = $('#canvs')[0].getContext("2d");
 let cty = $('#canvH')[0].getContext("2d");
@@ -14,9 +15,9 @@ $(document).ready(()=>{
     $('#sideBar').hide();
     $('#ersrT').hide();
     setTimeout(()=>{
-        $('#loadingScrn').fadeToggle(500);
+        $('#page-ld').fadeToggle(500);
         setTimeout(()=>{
-            $('#loadingScrn').remove();
+            $('#page-ld').remove();
         }, 500); 
     },500);
 });
@@ -56,6 +57,7 @@ $('#canvI').on("touchstart", (ev) => {
     dx = x = ev.touches[0].clientX*hdFx;
     dy = y = ev.touches[0].clientY*hdFx;
     detecT();
+    $('#canvH').click();
 });
 $('#canvI').on("touchmove", (ev) => {
     hold = [true, false];
@@ -280,7 +282,6 @@ function circ(){
 
 
 
-
 //To clear screen
 const allClr=()=>{
     cty.clearRect(0, 0, w, h);
@@ -290,7 +291,6 @@ const allClr=()=>{
 };
 $('#clr').on("click", allClr);
 //-------------------------------------------
-
 
 
 //-------------------------------------------
@@ -524,7 +524,7 @@ $('#svgIco1').on("touchmove", (ev) => {
 
 
 //-------------------------------------------
-//downlod image 
+//download image 
 function generateImg(){
     let el=$('<a id="download"></a>');
         $(el).attr({
