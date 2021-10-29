@@ -59,20 +59,38 @@ $('#canvI').on("touchstart", (ev) => {
     detecT();
     $('#canvH').click();
 });
+$('#canvI').on("mousedown", (ev) => {
+    hold = [true, true];
+    dx = x = ev.clientX*hdFx;
+    dy = y = ev.clientY*hdFx;
+    detecT();
+    $('#canvH').click();
+});
+
 $('#canvI').on("touchmove", (ev) => {
     hold = [true, false];
     x = ev.touches[0].clientX*hdFx;
     y = ev.touches[0].clientY*hdFx;
     detecT();
 });
-$('#canvI').on("touchend", (ev) => {
-    hold = [false, false];
+$('#canvI').on("mousemove", (ev) => {
+    if(!hold[0]) return;
+    hold[1] = false;
+    x = ev.clientX*hdFx;
+    y = ev.clientY*hdFx;
     detecT();
 });
-$('#canvI').on("touchcancel", (ev)=> {
-    hold = [false, false];
-    detecT();
-});
+
+const touchend = () => {
+  if(!(hold[0] || hold[1])) return;
+  hold = [false, false];
+  detecT();
+}
+
+$('#canvI').on("touchend", touchend);
+$('#canvI').on("touchcancel", touchend);
+$('#canvI').on("mouseup", touchend);
+$('#canvI').on("mouseover", touchend);
 
 //To show taps
 let showTap=true;

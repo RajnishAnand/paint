@@ -141,106 +141,110 @@ Created on : 03 Nov 2020
         </p>
     </div>
     
-    <!--for Tools (eraser, pencil.. ) -->
-    <div id="shapesC">
-        <div class="shapes">
-            <svg class="shapeIco">
-                <path style="stroke-width:1px;" d="
-                M8 12 L20 24 L32 12 L20 0 L0 20 L8 28 L16 28 L20 24
-                M8 28 L32 28
-                M12 12 L20 4
-                "/>
-            </svg>
-        </div>
-        <div class="shapes">
-            <svg class="shapeIco">
-                <path style="stroke-width:1px;" d="
-                M0 32 L12 28 L4 20 L0 32
-                M4 20 L20 4 L28 12 L12 28
-                M20 4 Q24 0 28 4 Q32 8 28 12
-                M8 20 L20 8
-                M2 26 L6 30
-                "/>
-            </svg>
-        </div>
-        <div class="shapes">
-            <svg class="shapeIco">
-                <line x1="4" y1="4" x2="28" y2="28" />
-            </svg>
-        </div>
-        <div class="shapes">
-            <svg class="shapeIco">
-                <rect x="4" y="4" height="24" width="24"/>
-            </svg>
-        </div>
-        <div class="shapes">
-            <svg class="shapeIco">
-                <circle cx="50%" cy="50%" r="12"/>
-            </svg>
-        </div>
-        <!--div class="shapes">
-            <svg class="shapeIco">
-                <text x="20%" y="87%" style="font-family:serif;stroke-width:1px;font-size:1.8em;" >T</text>
-            </svg>
-        </div -->
-        <div id="clr">
-            <svg class="shapeIco" style="stroke-width:1px;">
-                <path d="
-                M12 10 l0 -2 8 0 0 2
-                M9 10 l14 0 
-                M8 12 l16 0 l-2 0 l0 16 l-12 0 l0 -16
-                M12 15 l0 10 m10 0 l0 -10
-                "/>
-            </svg>
-        </div>
+
+    <div class="toolb">
+      
+      <!--for Tools (eraser, pencil.. ) -->
+      <div id="shapesC">
+          <div class="shapes">
+              <svg class="shapeIco">
+                  <path style="stroke-width:1px;" d="
+                  M8 12 L20 24 L32 12 L20 0 L0 20 L8 28 L16 28 L20 24
+                  M8 28 L32 28
+                  M12 12 L20 4
+                  "/>
+              </svg>
+          </div>
+          <div class="shapes">
+              <svg class="shapeIco">
+                  <path style="stroke-width:1px;" d="
+                  M0 32 L12 28 L4 20 L0 32
+                  M4 20 L20 4 L28 12 L12 28
+                  M20 4 Q24 0 28 4 Q32 8 28 12
+                  M8 20 L20 8
+                  M2 26 L6 30
+                  "/>
+              </svg>
+          </div>
+          <div class="shapes">
+              <svg class="shapeIco">
+                  <line x1="4" y1="4" x2="28" y2="28" />
+              </svg>
+          </div>
+          <div class="shapes">
+              <svg class="shapeIco">
+                  <rect x="4" y="4" height="24" width="24"/>
+              </svg>
+          </div>
+          <div class="shapes">
+              <svg class="shapeIco">
+                  <circle cx="50%" cy="50%" r="12"/>
+              </svg>
+          </div>
+          <!--div class="shapes">
+              <svg class="shapeIco">
+                  <text x="20%" y="87%" style="font-family:serif;stroke-width:1px;font-size:1.8em;" >T</text>
+              </svg>
+          </div -->
+          <div id="clr">
+              <svg class="shapeIco" style="stroke-width:1px;">
+                  <path d="
+                  M12 10 l0 -2 8 0 0 2
+                  M9 10 l14 0 
+                  M8 12 l16 0 l-2 0 l0 16 l-12 0 l0 -16
+                  M12 15 l0 10 m10 0 l0 -10
+                  "/>
+              </svg>
+          </div>
+      </div>
+      
+      <!--ℹ️ Color piker--
+      <div id="color-pik">
+          <div>R</div>
+          <div>B</div>
+          <div>G</div>
+      </div-->
+      
+      <!--Mini tool box for pencil,line, rect & circle, -->
+      <div id="stYl">
+          <div class="strokWidCnt">
+              <div id="strokeWidthDemo"></div>
+              <div id="stroKwidH"></div>
+          </div>
+          <div class="colOp">
+              Stroke :
+              <input type='text' id="strokeColInp" />
+          </div>
+          <div class="colOp">
+              Fill :
+              <input type="text" id="fillColInp" />
+          </div>
+          <div class="colOp">
+              Fill : Disabled
+          </div>
+          <svg id="closE">
+              <path d="
+              M15 15 L30 30 M15 30 L30 15
+              "/>
+          </svg>
+          <input id="inp1" type="range" min="1" max="50" value="2" />
+          <div class="filL">
+              Fill:
+              <input id="inp6" type="checkbox" />
+          </div>
+      </div>
+      <!--Eraser tool box-->
+      <div id="ersrT">
+          <div id="eraser-size">30</div>
+          <input type="range" max="100" min="1" value="30" id="inpEr">
+          <svg id="closR">
+              <path d="
+              M15 15 L30 30 M15 30 L30 15
+              "/>
+          </svg>
+      </div>
     </div>
-    
-    <!--ℹ️ Color piker--
-    <div id="color-pik">
-        <div>R</div>
-        <div>B</div>
-        <div>G</div>
-    </div-->
-    
-    <!--Mini tool box for pencil,line, rect & circle, -->
-    <div id="stYl">
-        <div class="strokWidCnt">
-            <div id="strokeWidthDemo"></div>
-            <div id="stroKwidH"></div>
-        </div>
-        <div class="colOp">
-            Stroke :
-            <input type='text' id="strokeColInp" />
-        </div>
-        <div class="colOp">
-            Fill :
-            <input type="text" id="fillColInp" />
-        </div>
-        <div class="colOp">
-            Fill : Disabled
-        </div>
-        <svg id="closE">
-            <path d="
-            M15 15 L30 30 M15 30 L30 15
-            "/>
-        </svg>
-        <input id="inp1" type="range" min="1" max="50" value="2" />
-        <div class="filL">
-            Fill:
-            <input id="inp6" type="checkbox" />
-        </div>
-    </div>
-    <!--Eraser tool box-->
-    <div id="ersrT">
-        <div id="eraser-size">30</div>
-        <input type="range" max="100" min="1" value="30" id="inpEr">
-        <svg id="closR">
-            <path d="
-            M15 15 L30 30 M15 30 L30 15
-            "/>
-        </svg>
-    </div>
-    
+
     <!--Text tool box--
     <div id="text-tool-box">
       <textarea>Your Text</textarea>
